@@ -1,0 +1,28 @@
+<div>
+  <mat-card class="form">
+    <div fxLayout="row">
+      <form #searchIssuesForm="ngForm" novalidate (submit)="getGithubIssues($event)">
+        <mat-form-field *ngIf="queryOptions">
+          <mat-label>Github repository URL</mat-label>
+          <input name="url" matInput type="text" [(ngModel)]="url" [disabled]="isLoading" [pattern]="isValidGithubRepoUrl" (change)="resetGithubIssues()" />
+          <mat-hint align="start"><strong>Example: https://github.com/nodejs/node</strong></mat-hint>
+          <button class="clear-url" mat-button type="button" *ngIf="url" matSuffix mat-icon-button aria-label="Clear" (click)="clearAll()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <!-- <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">Search</button> -->
+        <!-- <mat-spinner *ngIf="isLoading" diameter="50"></mat-spinner> -->
+      </form>
+    </div>
+  </mat-card>
+  <div>
+    <app-github-issues-list [githubIssuesList]="githubIssuesList"></app-github-issues-list>
+    <br />
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner *ngIf="isLoading" diameter="50"></mat-spinner>
+      <div *ngIf="hasMoreIssues">
+        <button class="more-github-issues" mat-raised-button color="primary" (click)="getMoreGithubIssues()" [disabled]="isLoading">Get more issues</button>
+      </div>
+    </div>
+  </div>
+</div>

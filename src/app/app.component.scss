@@ -1,0 +1,38 @@
+@import '../scss/global-constants.scss';
+
+.logo {
+  height: $toolbar-size - 4;
+}
+
+.app-name{
+  font-size: 120%;
+}
+
+.mat-toolbar{
+  height: $toolbar-size;
+}
+
+button{
+  font-size: 110%;
+  min-width: min-content;
+}
+
+mat-sidenav-container {
+  height: calc(100% - #{$toolbar-size});
+
+  .content {
+    padding: 14px;
+  }
+}
+
+@media (max-width: $toolbar-responsive-width) {
+  .toolbar-link-list {
+    display: none;
+  }
+}
+
+@media (min-width: $toolbar-responsive-width) {
+  .menu-button {
+    display: none;
+  }
+}

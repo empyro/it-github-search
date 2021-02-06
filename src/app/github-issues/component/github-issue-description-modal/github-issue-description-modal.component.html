@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>{{githubIssue.title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <p *ngFor="let line of githubIssue.content">{{line}}</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
